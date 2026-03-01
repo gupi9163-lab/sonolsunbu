@@ -64,29 +64,41 @@ body {
 .install-container {
   background: linear-gradient(135deg, #10b981 0%, #059669 100%);
   border-radius: 15px;
-  padding: 20px;
+  padding: 25px;
   margin-bottom: 20px;
-  box-shadow: 0 5px 20px rgba(16, 185, 129, 0.3);
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
   display: block;
   text-align: center;
   color: white;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+  }
+  50% {
+    box-shadow: 0 8px 35px rgba(16, 185, 129, 0.6);
+  }
 }
 
 .install-container h3 {
   color: white;
+  font-size: 20px;
 }
 
 .install-container p {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 16px;
 }
 
 .install-btn {
   background: white;
   color: #059669;
   border: none;
-  padding: 15px 30px;
-  border-radius: 25px;
-  font-size: 18px;
+  padding: 18px 40px;
+  border-radius: 30px;
+  font-size: 20px;
   font-weight: bold;
   cursor: pointer;
   width: 100%;
@@ -95,12 +107,17 @@ body {
   justify-content: center;
   gap: 10px;
   transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
 .install-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
   background: #f0fdf4;
+}
+
+.install-btn:active {
+  transform: translateY(-1px);
 }
 
 /* Main Menu */

@@ -44,10 +44,10 @@ app.get('/', (c) => {
     <div class="container">
         <!-- Install Button -->
         <div id="installContainer" class="install-container">
-            <h3 style="margin-bottom: 15px;">📱 Ana Ekrana Əlavə Edin</h3>
-            <p style="margin-bottom: 15px;">Tətbiqi yükləyin və internet olmadan istifadə edin!</p>
+            <h3 style="margin-bottom: 15px;">📱 Tətbiqi Ana Ekrana Əlavə Edin</h3>
+            <p style="margin-bottom: 15px;">İnternet olmadan da işləyir! ⚡ Bir klik!</p>
             <button id="installBtn" class="install-btn">
-                📲 Quraşdırma Təlimatları
+                📲 İNDİ QURAŞDIR
             </button>
         </div>
 

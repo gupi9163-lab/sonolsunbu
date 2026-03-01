@@ -10,28 +10,59 @@ window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredPrompt = e;
   installContainer.classList.add('show');
-  installBtn.textContent = '📱 Tətbiqi Quraşdır';
+  installBtn.innerHTML = '📲 İNDİ QURAŞDIR';
 });
 
 installBtn.addEventListener('click', async () => {
   if (deferredPrompt) {
+    // Android/Chrome - Avtomatik quraşdırma
     deferredPrompt.prompt();
     const { outcome } = await deferredPrompt.userChoice;
     if (outcome === 'accepted') {
-      installContainer.classList.remove('show');
+      installContainer.innerHTML = '<h3 style="margin: 0; color: white;">✅ Quraşdırıldı! Ana ekrana baxın</h3>';
+      setTimeout(() => {
+        installContainer.style.display = 'none';
+      }, 3000);
     }
     deferredPrompt = null;
   } else {
-    // Manual install instructions
+    // iOS və digər brauzerlər - avtomatik həll
     const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
     const isAndroid = /Android/.test(navigator.userAgent);
     
     if (isIOS) {
-      alert('iOS Quraşdırma:\n\n1. Safari brauzerdə açın\n2. Aşağıda "Paylaş" düyməsinə basın (⬆️)\n3. "Ana Ekrana Əlavə Et" seçin\n4. "Əlavə et" düyməsinə basın');
+      // iOS üçün daha sadə təlimat
+      installContainer.innerHTML = `
+        <h3 style="margin-bottom: 15px; color: white;">📱 iOS Quraşdırma</h3>
+        <div style="text-align: left; color: white; font-size: 16px; line-height: 1.8;">
+          1️⃣ Aşağıda <strong>"Paylaş"</strong> düyməsinə basın <strong>(⬆️)</strong><br>
+          2️⃣ <strong>"Ana Ekrana Əlavə Et"</strong> seçin<br>
+          3️⃣ <strong>"Əlavə et"</strong> düyməsinə basın
+        </div>
+        <button onclick="location.reload()" style="margin-top: 15px; padding: 10px 20px; background: white; color: #059669; border: none; border-radius: 10px; font-weight: bold; cursor: pointer;">✕ Bağla</button>
+      `;
     } else if (isAndroid) {
-      alert('Android Quraşdırma:\n\n1. Chrome brauzerdə açın\n2. Yuxarı sağ küncdə 3 nöqtəyə basın (⋮)\n3. "Ana ekrana əlavə et" seçin\n4. "Quraşdır" düyməsinə basın');
+      // Android üçün sadə təlimat  
+      installContainer.innerHTML = `
+        <h3 style="margin-bottom: 15px; color: white;">📱 Android Quraşdırma</h3>
+        <div style="text-align: left; color: white; font-size: 16px; line-height: 1.8;">
+          1️⃣ Yuxarı sağ küncdə <strong>3 nöqtəyə</strong> basın <strong>(⋮)</strong><br>
+          2️⃣ <strong>"Ana ekrana əlavə et"</strong> seçin<br>
+          3️⃣ <strong>"Quraşdır"</strong> düyməsinə basın
+        </div>
+        <button onclick="location.reload()" style="margin-top: 15px; padding: 10px 20px; background: white; color: #059669; border: none; border-radius: 10px; font-weight: bold; cursor: pointer;">✕ Bağla</button>
+      `;
     } else {
-      alert('Tətbiq Quraşdırma:\n\n1. Brauzer menyusunu açın\n2. "Quraşdır" və ya "Ana ekrana əlavə et" seçin\n\nVə ya:\n- Chrome: Ünvan sətrində quraşdırma ikonuna basın\n- Safari: Paylaş düyməsi > Ana ekrana əlavə et');
+      // Desktop və digər brauzerlər
+      installContainer.innerHTML = `
+        <h3 style="margin-bottom: 15px; color: white;">💻 Quraşdırma</h3>
+        <div style="text-align: left; color: white; font-size: 16px; line-height: 1.8;">
+          1️⃣ Brauzer menyusunu açın <strong>(⋮)</strong><br>
+          2️⃣ <strong>"Quraşdır"</strong> və ya <strong>"Ana ekrana əlavə et"</strong> seçin<br><br>
+          <strong>Və ya:</strong> Ünvan sətrində quraşdırma ikonuna <strong>(⊕)</strong> basın
+        </div>
+        <button onclick="location.reload()" style="margin-top: 15px; padding: 10px 20px; background: white; color: #059669; border: none; border-radius: 10px; font-weight: bold; cursor: pointer;">✕ Bağla</button>
+      `;
     }
   }
 });

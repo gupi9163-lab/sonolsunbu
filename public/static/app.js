@@ -3,22 +3,37 @@ let deferredPrompt;
 const installContainer = document.getElementById('installContainer');
 const installBtn = document.getElementById('installBtn');
 
+// Always show install container
+installContainer.classList.add('show');
+
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredPrompt = e;
   installContainer.classList.add('show');
+  installBtn.textContent = '📱 Tətbiqi Quraşdır';
 });
 
 installBtn.addEventListener('click', async () => {
-  if (!deferredPrompt) {
-    return;
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    if (outcome === 'accepted') {
+      installContainer.classList.remove('show');
+    }
+    deferredPrompt = null;
+  } else {
+    // Manual install instructions
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    const isAndroid = /Android/.test(navigator.userAgent);
+    
+    if (isIOS) {
+      alert('iOS Quraşdırma:\n\n1. Safari brauzerdə açın\n2. Aşağıda "Paylaş" düyməsinə basın (⬆️)\n3. "Ana Ekrana Əlavə Et" seçin\n4. "Əlavə et" düyməsinə basın');
+    } else if (isAndroid) {
+      alert('Android Quraşdırma:\n\n1. Chrome brauzerdə açın\n2. Yuxarı sağ küncdə 3 nöqtəyə basın (⋮)\n3. "Ana ekrana əlavə et" seçin\n4. "Quraşdır" düyməsinə basın');
+    } else {
+      alert('Tətbiq Quraşdırma:\n\n1. Brauzer menyusunu açın\n2. "Quraşdır" və ya "Ana ekrana əlavə et" seçin\n\nVə ya:\n- Chrome: Ünvan sətrində quraşdırma ikonuna basın\n- Safari: Paylaş düyməsi > Ana ekrana əlavə et');
+    }
   }
-  deferredPrompt.prompt();
-  const { outcome } = await deferredPrompt.userChoice;
-  if (outcome === 'accepted') {
-    installContainer.classList.remove('show');
-  }
-  deferredPrompt = null;
 });
 
 // Service Worker Registration

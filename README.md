@@ -78,13 +78,19 @@ npm run deploy:prod
 - **İmtahan Pulu**: İllik ödənişi və fənnin kreditini daxil edin
 - **Yaş**: Doğum tarixinizi GG.AA.İİİİ formatında daxil edin
 
-## GitHub Repository
-Repository: `webapp`
+## URLs
+- **Lokal Test**: https://3000-irftg6pe9ldeanhhk4m93-8f57ffe2.sandbox.novita.ai
+- **GitHub Repository**: https://github.com/gupi9163-lab/sonolsunbu
+- **Backup**: https://www.genspark.ai/api/files/s/bzOJMUgI
 
 ## Deployment Status
 - **Platform**: Cloudflare Pages
-- **Status**: 🔄 Hazırlanır
+- **Status**: ✅ GitHub-a yükləndi, Cloudflare deployment gözləyir
 - **Son Yeniləmə**: 2026-03-01
+- **Project Name**: bdu-calculator
+
+### Cloudflare Deployment
+Cloudflare Pages-ə deploy etmək üçün `DEPLOYMENT_GUIDE.md` faylına baxın.
 
 ## Növbəti Addımlar
 1. İkonları (192x192 və 512x512 PNG) əlavə edin

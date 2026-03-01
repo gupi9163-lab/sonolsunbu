@@ -79,18 +79,18 @@ npm run deploy:prod
 - **Yaş**: Doğum tarixinizi GG.AA.İİİİ formatında daxil edin
 
 ## URLs
-- **Lokal Test**: https://3000-irftg6pe9ldeanhhk4m93-8f57ffe2.sandbox.novita.ai
-- **GitHub Repository**: https://github.com/gupi9163-lab/sonolsunbu
-- **Backup**: https://www.genspark.ai/api/files/s/bzOJMUgI
+- **🌐 Production (CANLI)**: https://bdu-calculator.pages.dev
+- **📦 Preview**: https://31a8cb8a.bdu-calculator.pages.dev
+- **💻 Lokal Test**: https://3000-irftg6pe9ldeanhhk4m93-8f57ffe2.sandbox.novita.ai
+- **📂 GitHub Repository**: https://github.com/gupi9163-lab/sonolsunbu
+- **💾 Backup**: https://www.genspark.ai/api/files/s/bzOJMUgI
 
 ## Deployment Status
-- **Platform**: Cloudflare Pages
-- **Status**: ✅ GitHub-a yükləndi, Cloudflare deployment gözləyir
-- **Son Yeniləmə**: 2026-03-01
+- **Platform**: Cloudflare Pages ✅
+- **Status**: 🎉 **CANLI VƏ İŞLƏYİR!**
+- **Production URL**: https://bdu-calculator.pages.dev
+- **Son Deploy**: 2026-03-01
 - **Project Name**: bdu-calculator
-
-### Cloudflare Deployment
-Cloudflare Pages-ə deploy etmək üçün `DEPLOYMENT_GUIDE.md` faylına baxın.
 
 ## Növbəti Addımlar
 1. İkonları (192x192 və 512x512 PNG) əlavə edin
